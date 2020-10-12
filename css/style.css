@@ -1,0 +1,28 @@
+body {
+    font-style: italic;
+    width: 50%;
+    margin: 0px auto;
+   
+}
+
+#login_form {}
+
+#f1 {
+    background-color: #FFF;
+    border-style: solid;
+    border-width: 1px;
+    padding: 23px 1px 20px 114px;
+}
+
+.f1_label {
+    white-space: nowrap;
+}
+
+span {
+    color: white;
+}
+
+.new {
+    background: black;
+    text-align: center;
+}
