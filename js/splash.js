@@ -4,27 +4,24 @@ var init = function () {
        
     
     var token = localStorage.getItem("jwt token");
-    
-    console.log(token);
    
+    
+    //launch next screen after 2 seconds....
     setInterval(function(){
     	
     	
     	 if(token === null)
-     	{
-     	location.href = "index.html";
-     	}
+    		 location.href = "login.html";
     	 else
-    		 {
-    	     	location.href = "home.html";
-    		 }
+    	 	location.href = "home.html";
+    		 
     	
-    },5000);
+    },2000);
    
     
  
 };
-// window.onload can work without <body onload="">
+
 window.onload = init;
 
 

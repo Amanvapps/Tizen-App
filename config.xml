@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets" id="http://yourdomain/LoginTizen" version="1.0.0" viewmodes="maximized">
-    <tizen:application id="vVoP58QyEI.LoginTizen" package="vVoP58QyEI" required_version="2.3"/>
-    <access origin="*" subdomains="true"/>
+<widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets" id="http://yourdomain/UAMTV" version="1.0.0" viewmodes="maximized">
+    <tizen:application id="IFV5mNO52T.UAMTV" package="IFV5mNO52T" required_version="2.3"/>
     <content src="splash.html"/>
+    <access origin="*" subdomains="true"/>
     <feature name="http://tizen.org/feature/screen.size.normal.1080.1920"/>
     <icon src="icon.png"/>
-    <name>LoginTizen</name>
-     <tizen:privilege name="http://tizen.org/privilege/internet"/>
+    <name>UAMTV</name>
+    <tizen:privilege name="http://tizen.org/privilege/internet"/>
     <tizen:privilege name="http://developer.samsung.com/privilege/productinfo"/>
     <tizen:profile name="tv-samsung"/>
     <tizen:setting screen-orientation="landscape" context-menu="enable" background-support="disable" encryption="disable" install-location="auto" hwkey-event="enable"/>
