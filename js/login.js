@@ -46,6 +46,7 @@ function keyLeft()
 {
 	if(document.activeElement.id === "loginButton")
 		{
+		rememberFocus();
 		removeFocus("loginButton");
 	    document.getElementById("remember").focus();
 		}
@@ -56,6 +57,7 @@ function keyRight()
 {
 	if(document.activeElement.id === "remember")
 		{
+		removeFocus("remember");
 		loginStyleChange();
 	    document.getElementById("loginButton").focus();
 		}
@@ -80,6 +82,7 @@ function keyUp()
     document.getElementById("email").focus();
 	}
 	else if(document.activeElement.id === "remember") {
+		removeFocus("remember");
 	    document.getElementById("pass").focus();
 	}
 	else if(document.activeElement.id === "loginButton") {
@@ -92,6 +95,7 @@ function keyUp()
 	    document.getElementById("forgotPassword").focus();
 	}
 	else if(document.activeElement.id === "forgotPassword") {
+		rememberFocus();
 		removeFocus("forgotPassword");
 	    document.getElementById("remember").focus();
 	   
@@ -99,24 +103,6 @@ function keyUp()
 }
 
 
-function removeFocus(id)
-{
-	if(id === "subscribe")
-		{
-		var el = document.getElementsByClassName("activeClass")[0].id;
-	    document.getElementById(el).classList.remove("activeClass");
-		}
-	else if(id === "forgotPassword")
-		{
-		var el = document.getElementsByClassName("activeClass_Forget_Password")[0].id;
-	    document.getElementById(el).classList.remove("activeClass_Forget_Password");
-		}
-	else if(id === "loginButton")
-	{
-	var el = document.getElementsByClassName("loginBtn_style")[0].id;
-    document.getElementById(el).classList.remove("loginBtn_style");
-	}
-}
 
 function keyDown() {
 	
@@ -126,6 +112,7 @@ function keyDown() {
 	}
 else if(document.activeElement.id === "pass")
 	{
+	rememberFocus();
     document.getElementById("remember").focus();
 	}
 else if(document.activeElement.id === "loginButton")
@@ -136,6 +123,7 @@ else if(document.activeElement.id === "loginButton")
 	}
 else if(document.activeElement.id === "remember")
 	{
+	removeFocus("remember");
 	changeStyle();
 	document.getElementById("forgotPassword").focus();
 	}
@@ -150,6 +138,9 @@ else if(document.activeElement.id === "forgotPassword")
 }
 
 
+
+
+//to change css of active elements...
 function changeStyle() {
 	document.getElementById("forgotPassword").classList.add('activeClass_Forget_Password');		
 }
@@ -159,11 +150,83 @@ function signUpNOw(){
 function loginStyleChange() {
 	document.getElementById("loginButton").classList.add('loginBtn_style');
 }
+function rememberFocus(){
+	
+	document.getElementById("remmber_label").classList.add('remember_label_style');
+}
 
 
 
+//remove focus....
+function removeFocus(id)
+{
+	if(id === "subscribe")
+		{
+		var el = document.getElementsByClassName("activeClass")[0].id;
+	    document.getElementById(el).classList.remove("activeClass");
+		}
+	else if(id === "forgotPassword")
+		{
+		var el = document.getElementsByClassName("activeClass_Forget_Password")[0].id;
+	    document.getElementById(el).classList.remove("activeClass_Forget_Password");
+		}
+	else if(id === "loginButton")
+		{
+		var el = document.getElementsByClassName("loginBtn_style")[0].id;
+		document.getElementById(el).classList.remove("loginBtn_style");
+		}
+	else if(id === "remember")
+		{
+		var el = document.getElementsByClassName("remember_label_style")[0].id;
+	    document.getElementById(el).classList.remove("remember_label_style");
+		}
+}
+
+
+
+function showLoader()
+{
+	document.getElementById("form_div").classList.add('form_div_style');
+	document.getElementById("left_image_div").classList.add('form_div_style');
+	document.getElementById("left_Section_Id").classList.add('leftSection_after_loader');
+	document.getElementById("spinner_display_id").classList.add('spinner_after');
+}
+
+function hideLoader()
+{
+	var el = document.getElementsByClassName("form_div_style")[0].id;
+    document.getElementById(el).classList.remove("form_div_style");
+    
+    
+   
+    		
+    		document.getElementById("form_div").classList.remove("form_div_style");
+
+    		document.getElementById("left_image_div").classList.remove("form_div_style");
+    		
+    var el2 = document.getElementsByClassName("leftSection_after_loader")[0].id;
+    document.getElementById(el2).classList.remove("leftSection_after_loader");
+    
+    var el3 = document.getElementsByClassName("spinner_after")[0].id;
+    document.getElementById(el3).classList.remove("spinner_after");
+}
+
+
+
+
+
+//login function....
 function login()
 {
+	
+	
+	
+	
+	//showLoader
+	
+	showLoader();
+	
+	
 	
 	
 	let formData = new FormData();
@@ -173,6 +236,11 @@ function login()
 	formData.append('devicefriendlyname',  webapis.productinfo.getModel());
 	formData.append('platform', "Tizen " + webapis.tvinfo.getVersion());
 	formData.append('version', webapis.productinfo.getVersion());
+	
+	
+	
+	
+	
 	
 
 	
@@ -187,9 +255,17 @@ function login()
 	  if(document.getElementById("remember").checked)
 	  localStorage.setItem("jwt token", data["jwt"]);
 	  
+	  hideLoader();
+	  
+	  location.href = "home.html";
+	  
+	  
+	  
+	  
 	})
 	.catch((error) => {
 	  console.error('Err:', error);
+	  hideLoader();
 	});
 	
 
@@ -197,6 +273,10 @@ function login()
 	
 }
 
+
+
+
+//init keyboard listener for textfields.....
 function initLoginElements()
 {
 
