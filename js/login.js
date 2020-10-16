@@ -227,48 +227,49 @@ function login()
 	showLoader();
 	
 	
-	
-	
-	let formData = new FormData();
-	formData.append('username', document.getElementById("email").value);
-	formData.append('password', document.getElementById("pass").value);
-	formData.append('devicehash', "SDKHUWUR7SQ24");
-	formData.append('devicefriendlyname',  webapis.productinfo.getModel());
-	formData.append('platform', "Tizen " + webapis.tvinfo.getVersion());
-	formData.append('version', webapis.productinfo.getVersion());
-	
-	
-	
-	
-	
+//	
+//	
+//	let formData = new FormData();
+//	formData.append('username', document.getElementById("email").value);
+//	formData.append('password', document.getElementById("pass").value);
+//	formData.append('devicehash', "SDKHUWUR7SQ24");
+//	formData.append('devicefriendlyname',  webapis.productinfo.getModel());
+//	formData.append('platform', "Tizen " + webapis.tvinfo.getVersion());
+//	formData.append('version', webapis.productinfo.getVersion());
+//	
+//	
+//	
+//	
+//	
+//	
+//
+//	
+//	fetch('https://api.uam.tv/v3/users/auth/get.php', {
+//	  method: 'POST', // or 'PUT'
+//	  body:formData,
+//	})
+//	.then(response => response.json())
+//	.then(data => {
+//	  console.log('Success:', data["jwt"]);
+//	  
+//	  //if(document.getElementById("remember").checked)
+//	  localStorage.setItem("jwt token", data["jwt"]);
+//	  
+//	  hideLoader();
+//	  
+//	  location.href = "home.html";
+//	  
+//	  
+//	  
+//	  
+//	})
+//	.catch((error) => {
+//	  console.error('Err:', error);
+//	  hideLoader();
+//	});
 	
 
-	
-	fetch('https://api.uam.tv/v3/users/auth/get.php', {
-	  method: 'POST', // or 'PUT'
-	  body:formData,
-	})
-	.then(response => response.json())
-	.then(data => {
-	  console.log('Success:', data["jwt"]);
-	  
-	  if(document.getElementById("remember").checked)
-	  localStorage.setItem("jwt token", data["jwt"]);
-	  
-	  hideLoader();
-	  
-	  location.href = "home.html";
-	  
-	  
-	  
-	  
-	})
-	.catch((error) => {
-	  console.error('Err:', error);
-	  hideLoader();
-	});
-	
-
+	 location.href = "home/home.html";
 	
 	
 }
