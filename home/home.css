@@ -1,7 +1,11 @@
 body {
     color: white;
     src: url("../webfonts/fa-brands-400.eot");
+    overflow: hidden;
 }
+
+
+html { scroll-behavior: smooth; } 
 
 header {
        width: 100%;
@@ -34,11 +38,30 @@ header nav ul li {
     background-color: #291b3c;
     margin-right: 10px;
 }
+
+#fa-user , #fa-wifi , #fa-bell{
+	width: 50px;
+    height: 40px;
+    text-align: center;
+}
+header nav ul li:nth-child(2) {
+    position: relative;
+}
+
+ #badge{
+    position: absolute;
+    right: 7px;
+    top: 3px;
+    border-radius: 50%;
+    background: red;
+    font-size: 21px;
+   } 
+   
 .user_name{
 	 position: relative;
       right: 5px;
 }
-   
+  
 
 header nav ul li:hover {
     display: inline-block;
@@ -282,7 +305,7 @@ span #detail {
 }
 
 
-/* carsoul */
+/ carsoul /
 
 .carousel .carousel-item {
     text-align: center;

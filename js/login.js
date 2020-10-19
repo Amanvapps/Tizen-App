@@ -186,29 +186,22 @@ function removeFocus(id)
 
 function showLoader()
 {
-	document.getElementById("form_div").classList.add('form_div_style');
-	document.getElementById("left_image_div").classList.add('form_div_style');
-	document.getElementById("left_Section_Id").classList.add('leftSection_after_loader');
-	document.getElementById("spinner_display_id").classList.add('spinner_after');
+	document.getElementById("spinner_display_id").classList.add('hide_loader');
+	document.getElementById("opacity_effect").classList.add('add_opacity');
+	
+	
 }
 
 function hideLoader()
 {
-	var el = document.getElementsByClassName("form_div_style")[0].id;
-    document.getElementById(el).classList.remove("form_div_style");
+	var el = document.getElementsByClassName("add_opacity")[0].id;
+    document.getElementById(el).classList.remove("add_opacity");
+    
+    var el1 = document.getElementsByClassName("hide_loader")[0].id;
+    document.getElementById(el1).classList.remove("hide_loader");
     
     
-   
-    		
-    		document.getElementById("form_div").classList.remove("form_div_style");
-
-    		document.getElementById("left_image_div").classList.remove("form_div_style");
-    		
-    var el2 = document.getElementsByClassName("leftSection_after_loader")[0].id;
-    document.getElementById(el2).classList.remove("leftSection_after_loader");
-    
-    var el3 = document.getElementsByClassName("spinner_after")[0].id;
-    document.getElementById(el3).classList.remove("spinner_after");
+  
 }
 
 
@@ -227,49 +220,49 @@ function login()
 	showLoader();
 	
 	
-//	
-//	
-//	let formData = new FormData();
-//	formData.append('username', document.getElementById("email").value);
-//	formData.append('password', document.getElementById("pass").value);
-//	formData.append('devicehash', "SDKHUWUR7SQ24");
-//	formData.append('devicefriendlyname',  webapis.productinfo.getModel());
-//	formData.append('platform', "Tizen " + webapis.tvinfo.getVersion());
-//	formData.append('version', webapis.productinfo.getVersion());
-//	
-//	
-//	
-//	
-//	
-//	
-//
-//	
-//	fetch('https://api.uam.tv/v3/users/auth/get.php', {
-//	  method: 'POST', // or 'PUT'
-//	  body:formData,
-//	})
-//	.then(response => response.json())
-//	.then(data => {
-//	  console.log('Success:', data["jwt"]);
-//	  
-//	  //if(document.getElementById("remember").checked)
-//	  localStorage.setItem("jwt token", data["jwt"]);
-//	  
-//	  hideLoader();
-//	  
-//	  location.href = "home.html";
-//	  
-//	  
-//	  
-//	  
-//	})
-//	.catch((error) => {
-//	  console.error('Err:', error);
-//	  hideLoader();
-//	});
+	
+	
+	let formData = new FormData();
+	formData.append('username', document.getElementById("email").value);
+	formData.append('password', document.getElementById("pass").value);
+	formData.append('devicehash', "SDKHUWUR7SQ24");
+	formData.append('devicefriendlyname',  webapis.productinfo.getModel());
+	formData.append('platform', "Tizen " + webapis.tvinfo.getVersion());
+	formData.append('version', webapis.productinfo.getVersion());
+	
+	
+	
+	
+	
 	
 
-	 location.href = "home/home.html";
+	
+	fetch('https://api.uam.tv/v3/users/auth/get.php', {
+	  method: 'POST', // or 'PUT'
+	  body:formData,
+	})
+	.then(response => response.json())
+	.then(data => {
+	  console.log('Success:', data["jwt"]);
+	  
+	  //if(document.getElementById("remember").checked)
+	  localStorage.setItem("jwt token", data["jwt"]);
+	  
+	  hideLoader();
+	  
+	  location.href = "home/home.html";
+	  
+	  
+	  
+	  
+	})
+	.catch((error) => {
+	  console.error('Err:', error);
+	  hideLoader();
+	});
+	
+
+	
 	
 	
 }

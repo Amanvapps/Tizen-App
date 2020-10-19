@@ -8,43 +8,39 @@
     <title>Tizen Web IDE - Tizen - Samsung Tizen TV basic Application</title>
 
     <link rel="stylesheet" type="text/css" href="css/login.css" />
+    <link rel="stylesheet" type="text/css" href="css/all.min.css"/>
     <script src="js/login.js"></script>
     <script type="text/javascript" src="$WEBAPIS/webapis/webapis.js"></script>
 </head>
 
-  
-<body>
-<div class="column">
-        <div class="row" id="left_image_div">
-            <img alt="Image is not available" src="../images/logo.svg" class="logoImage">
-            <h1 class="heading">The TV that can change your <br/> view of the world.</h1>
-        </div>
-    </div>
-    <div class="column ">
-    <div class="loadingio-spinner-spinner-rexyx9adxl spinner" id="spinner_display_id"><div class="ldio-eon67kjyqwt">
+ <body>
+   <div class="loadingio-spinner-spinner-rexyx9adxl spinner" id="spinner_display_id"><div class="ldio-eon67kjyqwt">
 <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
 </div></div>
-        <div class="leftSection" id="left_Section_Id">
-            <div id="form_div">
-            <h1 class="signIn"><b>Sign In</b></h1>
-            <br><br>
-            
-                <img alt="No image" src="../images/email.png">
-                <input id="email" type="text" class="inputsE" placeholder="E-mail"> <br> <br> <br>
-                <img alt="No image" src="../images/password.jpg">
-                <input id="pass" type="password" class="inputsE" placeholder="Password"> <br><br><br><br>
-                <button class="loginBtn" id="loginButton" onclick="">Login</button> 
-                <input id = "remember" type="checkbox" class="checkBox" onclick="">
-            <label class="label" style="color: white;font-size: 25px" id="remmber_label"  >Remember me</label><br> <br><br> <br>
-           <button class="nonStyle_btn" id="forgotPassword" onclick=""><h2><b>Forgot Password ?</b></h2></button> 
-            
-            <h2>Not a subscriber ? <button class="nonStyle_btn" id="subscribe" onclick="" ><strong>Subscribe now</strong></button></h2>
-            </div>
-            
-        </div>
-    </div>
 
 
-</body>
+ <div id="opacity_effect">
+ <div class="section1">
+<img alt="" src="../images/logo.svg"> <br>
+<h1 class="heading">The TV that can change your <br/> view of the world.</h1>
+</div>
+<div class="section2">
+<div class="container">
+<h1 class="signin">Sign In</h1><br><br>
+<input id="email" class="inputsE" type="text" placeholder="E-mail"> 
+<i class="fa fa-envelope"></i><br> <br><br>
+<input id="pass" class="inputsE" type="password" placeholder="Password"> 
+<i class="fa fa-lock"></i><br><br><br>
+<div class="chebox_btn_section">
+<div><input id = "remember" type="checkbox" class="checkBox" onclick="rememberFocus()"><label id="remmber_label">Remember me</label></div>
+<button class="loginBtn"  id="loginButton" onclick="loginStyleChange()">Sign in</button>
+</div> <br> <br><br>
+<button class="nonStyle_btn"  id="forgotPassword" onclick=" changeStyle() ">Forgot Password</button> <br>
+<h2>Not a subscriber ? <button class="nonStyle_btn"  id="subscribe" onclick="signUpNOw()" ><strong>Subscribe now</strong></button></h2>
+<hr>
+</div>
+</div>
+ </div>
+ </body>
  
 </html>
