@@ -10,8 +10,9 @@ var selectedListPos ;               //selected element of any of 3 lists...
 var init = function () {
        
 	
-//	showLoader();
 	
+	
+	viewLoader();
 	
 	//set Focus on details text....
 	setFocus("detail" , "activeDetail");
@@ -114,7 +115,7 @@ function moveUp()
 		}
 	else if(document.getElementsByClassName("activeViewed")[0] !== undefined)
 		{
-		   window.scrollBy(0, -500);
+			scroll('-=500px');
 		   selectedListPos = 0 ;
 		   setFocus("categories " +  selectedListPos, "activeCategory");
 		   
@@ -123,8 +124,8 @@ function moveUp()
 	else if(document.getElementsByClassName("activeRecents")[0] !== undefined)
 	{
 	
-	   window.scrollBy(0, -200);
-	   selectedListPos = 0 ;
+		scroll('-=200px');
+		selectedListPos = 0 ;
 	   setFocus("viewed " +  selectedListPos, "activeViewed");
 	   
 	   removeFocus("activeRecents");
@@ -146,7 +147,7 @@ function moveDown()
 	else if(document.getElementsByClassName("activeCategory")[0] !== undefined)
 		{
 		 
-		 window.scrollBy(0, 500);	
+		 scroll('+=400px');
 		 selectedListPos = 0 ;
 		   setFocus("viewed " +  selectedListPos, "activeViewed");
 		   
@@ -155,8 +156,8 @@ function moveDown()
 	else if(document.getElementsByClassName("activeViewed")[0] !== undefined)
 	{
 		
-		window.scrollBy(0, 300);	
-	 selectedListPos = 0 ;
+		 scroll('+=300px');	
+		selectedListPos = 0 ;
 	   setFocus("recent " +  selectedListPos, "activeRecents");
 	   
 	   removeFocus("activeViewed");
@@ -164,6 +165,13 @@ function moveDown()
 	
 }
 
+
+function scroll(by)
+{
+    $('html, body').animate({
+        scrollTop: by
+    }, 300);
+}
 
 
 function moveRight()
@@ -241,9 +249,10 @@ function getRandomMovies(token)
 		
  			//add categories to list.....
 				var obj = {
-						"fullId" :  result["src"]["id_full"],
+						"fullId" : result["src"]["id_full"],
 						"title" :  result["langs"]["it"]["title"],
-						"image" :  "https://media.uam.tv/images/media/frames/"  + result["src"]["id_full"] + ".jpg"
+						"image" :  "https://media.uam.tv/images/media/frames/"  + result["src"]["id_full"] + ".jpg",
+					   	"desc" :    result["langs"]["it"]["logline"],
 				};
 			
 				randomBannerList.push(obj);
@@ -379,7 +388,10 @@ function getMostViewed(token)
 
 function addBackground()
 {
-	var showcase = document.getElementById("");
+	changeBg(randomBannerList[0]["image"]);
+	document.getElementById('random-title').innerHTML = randomBannerList[0]["title"];
+	document.getElementById('desc').innerHTML = randomBannerList[0]["desc"];
+
 }
 
 
@@ -457,6 +469,8 @@ function addCategories()
 	
 	
 }
+
+
 
 
 function addMostRecents()
@@ -597,10 +611,42 @@ function addMostViewed()
         row.innerHTML += temp;
         
         
+        hideLoader();
+        
+        
 	})
 	
 	
 	
 }
 
+
+function changeBg(image) {
+    var d = {
+        img: image,
+    }
+    var img =  d.img;
+    var a = "linear-gradient(rgba(21, 9, 36, 1), rgba(20, 9, 34, .7), rgba(21, 9, 36, .7)),"
+    var b = "url(" + img + ")";
+    var c = a + b;
+    console.log(c);
+    document.getElementById('split_right').style.backgroundImage = c;
+    
+    
+}
+
+
+function viewLoader(){
+	document.getElementById("parentRightSection").classList.add('parent_right_section');
+	document.getElementById("spinner_display_id").classList.add('loadingio-spinner-spinner-rexyx9adxl');
+
+	}
+
+
+function hideLoader(){
+		document.getElementById("parentRightSection").classList.remove('parent_right_section');
+		document.getElementById("spinner_display_id").classList.remove('loadingio-spinner-spinner-rexyx9adxl');
+		
+	
+		}
 

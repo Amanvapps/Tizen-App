@@ -30,6 +30,10 @@
   position: relative;
 }
 
+::placeholder{
+	color : white;
+}
+
 .heading{
     color: white;
     font-size: 45px;

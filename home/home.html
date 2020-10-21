@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -12,8 +16,10 @@
     <script type="text/javascript" src="../js/popper.min.js"></script>
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/all.min.css" />
 </head>
+
 
 <body>
 
@@ -31,7 +37,9 @@
 </header>
 
 <div class="main_section">
-
+<div class=" spinner" id="spinner_display_id"><div class="ldio-eon67kjyqwt">
+<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+</div></div>
 
     <div class="split left">
         <div class="centered">
@@ -39,20 +47,32 @@
                 <span> <i class="fa fa-search"></i></span>
                 <input type="text" class="search_Box" placeholder="Search">
 
-                <button class="watch_btn"><span> <i class="fa fa-play-circle"></i></span> <span class="ml-4"> Watch Now</span></button>
-
-                <button><span><i class="fab fa-viadeo"></i></span><span class="ml-4"> Catagories</span> </button>
+                <button class="watch_btn" onclick=""><span> <i class="fa fa-play-circle"></i></span> <span class="ml-4"> Watch Now</span></button>
+                  
+                <button onclick=""><span><i class="fab fa-viadeo"></i></span><span class="ml-4"> Catagories</span> </button>
 
                 <button><span><i class="far fa-heart"></i></span> <span class="ml-4"> Favourites</span></button>
             </div>
         </div>
-        <button class="setting_btn"><span><i class="fa fa-cog"></i></span> <span class="ml-4">Setting</span> </button>
+        <button class="setting_btn" onclick="settingsNavigate()"><span><i class="fa fa-cog"></i></span> <span class="ml-4">Setting</span> </button>
+   
+   <script type="text/javascript">
+   
+   function settingsNavigate()
+   {
+      location.href = "../settings/settings.html";
+  
+   }
+   
+   </script>
+   
     </div>
 
     <div class="split right" id="split_right">
-        <div class="centered">
-            <h3 class="mt-4">Remotti Profession</h3>
-            <p class="video_description">Video is an electronic medium for the recording, copying, playback, broadcasting, and display of moving visual media.[1] Video was first developed for mechanical television systems, which were quickly replaced by cathode ray tube (CRT) systems
+    <div class="parent_right_section" id="parentRightSection">
+    <div class="centered">
+            <h3 id="random-title" class="mt-4">Remotti Profession</h3>
+            <p id="desc" class="video_description">Video is an electronic medium for the recording, copying, playback, broadcasting, and display of moving visual media.[1] Video was first developed for mechanical television systems, which were quickly replaced by cathode ray tube (CRT) systems
                 which were later replaced by flat</p>
             <p class="detail_year d-flex justify-content-start">
                 <span>2020</span>
@@ -63,7 +83,7 @@
           
             
             <span>
- <button id="play_now_button" class="play_btn mt-5"><i class="fa fa-play text-white"></i><span class="ml-3">Play Now</span></button>
+ <button class="play_btn mt-5"><i class="fa fa-play text-white"></i><span class="ml-3">Play Now</span></button>
             <button class="favourite_btn mt-5">  <i class="fa fa-star text-white"></i><span class="ml-3"> Add to favourites</span></button>
             </span>
             <br><br>
@@ -154,6 +174,8 @@
                 </div>
             </div>
         </div>
+    </div>
+        
     </div>
 </div>
 </body>
