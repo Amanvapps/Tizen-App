@@ -15,7 +15,13 @@ var init = function () {
 	viewLoader();
 	
 	//set Focus on details text....
+	
+	
 	setFocus("detail" , "activeDetail");
+	
+	
+	
+	
 	
 	getHomeScreenData();
     initTizenKeys();
@@ -35,7 +41,7 @@ function initTizenKeys()
     document.addEventListener('keydown', function(e) {
     	switch(e.keyCode){
     	case 37: //LEFT arrow
-    		//moveLeft();
+    		moveLeft();
     		break;
     	case 38: //UP arrow
     		moveUp();
@@ -62,6 +68,18 @@ function initTizenKeys()
 }
 
 
+function showSection(id){
+	
+	document.getElementById(id).style.display = "block";
+	
+}
+
+function hideSection(id){
+	
+	
+	document.getElementById(id).style.display = "none";
+	
+}
 
 function setFocus(id , clas)
 {
@@ -108,11 +126,25 @@ function moveUp()
 {
 	if(document.getElementsByClassName("activeCategory")[0] !== undefined)
 		{
-		   setFocus("detail" , "activeDetail");
+		   setFocus("play_btn" , "button_play_now");
 		   
 		   removeFocus("activeCategory");
 			
 		}
+	else if(document.getElementsByClassName("button_play_now")[0] !== undefined)
+	{
+	  
+	   setFocus("detail", "activeDetail");
+	   
+	   removeFocus("button_play_now");
+	}
+	else if(document.getElementsByClassName("button_favourite")[0] !== undefined)
+	{
+	  
+	   setFocus("detail", "activeDetail");
+	   
+	   removeFocus("button_favourite");
+	} 
 	else if(document.getElementsByClassName("activeViewed")[0] !== undefined)
 		{
 			scroll('-=500px');
@@ -138,12 +170,25 @@ function moveDown()
 {
 	if(document.getElementsByClassName("activeDetail")[0] !== undefined)
 		{
-		   selectedListPos = 0 ;
-		   setFocus("categories " +  selectedListPos, "activeCategory");
+		   setFocus("play_btn", "button_play_now");
 		   
 		   removeFocus("activeDetail");
 			
 		}
+	else if(document.getElementsByClassName("button_play_now")[0] !== undefined)
+		{
+		   selectedListPos = 0 ;
+		   setFocus("categories " +  selectedListPos, "activeCategory");
+		   
+		   removeFocus("button_play_now");
+		}
+	else if(document.getElementsByClassName("button_favourite")[0] !== undefined)
+	{
+	   selectedListPos = 0 ;
+	   setFocus("categories " +  selectedListPos, "activeCategory");
+	   
+	   removeFocus("button_favourite");
+	}
 	else if(document.getElementsByClassName("activeCategory")[0] !== undefined)
 		{
 		 
@@ -166,6 +211,22 @@ function moveDown()
 }
 
 
+
+
+function moveLeft(){
+	
+	if(document.getElementsByClassName("button_favourite")[0] !== undefined)
+	{
+		
+	   setFocus("play_btn", "button_play_now");
+	   
+	   removeFocus("button_favourite");
+	}
+	
+}
+
+
+
 function scroll(by)
 {
     $('html, body').animate({
@@ -176,7 +237,15 @@ function scroll(by)
 
 function moveRight()
 {
-	if(document.getElementsByClassName("activeCategory")[0] !== undefined)
+	if(document.getElementsByClassName("button_play_now")[0] !== undefined)
+	{
+		
+			   removeFocus("button_play_now");
+			   setFocus("add_fav_btn", "button_favourite");
+		
+	  
+	}
+	else if(document.getElementsByClassName("activeCategory")[0] !== undefined)
 	{
 		if(selectedListPos !== (categoryList.length-1))
 			{
@@ -396,6 +465,85 @@ function addBackground()
 
 
 
+function addCategoriesToCategoryScreen(){
+	
+	
+	
+	document.getElementById("container-fluid-category-id").innerHTML = ``;
+	
+	
+var rowId = "-1";
+	
+
+	categoryList.forEach((result, idx) => {
+		
+		
+		console.log(idx);
+		
+		if(idx % 4 == 0)
+			{
+			if(idx == 0)
+				{
+			
+				var showcase = document.getElementById("container-fluid-category-id");
+				rowId = idx;
+				
+				showcase.innerHTML += `<div id="row-category ${rowId.toString()}" class="row"></div>`;
+				
+				}
+			else
+				{
+				
+				var showcase = document.getElementById("container-fluid-category-id");
+				rowId = idx;
+				
+				showcase.innerHTML += `<div id="row-category ${rowId.toString()}" class="row mt-5"></div>`;
+				}
+		
+			
+			}
+		
+		
+		var row = document.getElementById("row-category " + rowId);
+        var temp = `
+        
+        
+        
+        
+        <div class="col-lg-3 mt-4">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="${result["image"]}" alt="Card image cap">
+            <p class="category_type">${result["title"]}</p>
+        </div>
+    </div>
+        
+        
+        
+        
+        
+        
+        `;
+        
+        row.innerHTML += temp;
+        
+        
+	})
+	
+	
+	
+	
+
+	  removeFocusHome();
+	
+	hideSection("watch_section_id");
+	hideSection("favourite_setion");
+	showSection("category_setion");
+	
+	
+}
+
+
+
 function addCategories()
 {
 	
@@ -469,8 +617,6 @@ function addCategories()
 	
 	
 }
-
-
 
 
 function addMostRecents()
@@ -621,6 +767,124 @@ function addMostViewed()
 }
 
 
+
+function addFavouritesToFavouritesScreen(){
+	
+	
+	
+	document.getElementById("container-fluid-favourite-id").innerHTML = ``;
+	
+	
+var rowId = "-1";
+	
+
+	categoryList.forEach((result, idx) => {
+		
+		
+		console.log(idx);
+		
+		if(idx % 4 == 0)
+			{
+			if(idx == 0)
+				{
+			
+				var showcase = document.getElementById("container-fluid-favourite-id");
+				rowId = idx;
+				
+				showcase.innerHTML += `<div id="row-favourite ${rowId.toString()}" class="row"></div>`;
+				
+				}
+			else
+				{
+				
+				var showcase = document.getElementById("container-fluid-favourite-id");
+				rowId = idx;
+				
+				showcase.innerHTML += `<div id="row-favourite ${rowId.toString()}" class="row mt-5"></div>`;
+				}
+		
+			
+			}
+		
+		
+		var row = document.getElementById("row-favourite " + rowId);
+        var temp = `
+        
+        
+        
+        
+        <div class="col-lg-3 mt-4">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="${result["image"]}" alt="Card image cap">
+            <p class="category_type">${result["title"]}</p>
+        </div>
+    </div>
+        
+        
+        
+        
+        
+        
+        `;
+        
+        row.innerHTML += temp;
+        
+        
+	})
+	
+	
+	
+	
+	//scroll to top of home...
+	
+	  removeFocusHome();
+	
+	hideSection("watch_section_id");
+	showSection("favourite_setion");
+	hideSection("category_setion");
+	
+	
+}
+
+
+
+
+
+
+function showCategorySection(){
+	
+	
+	addCategoriesToCategoryScreen();
+	
+	
+	
+	
+	
+}
+
+
+function showWatchSection(){ 
+	
+	
+	  
+	showSection("watch_section_id");
+	hideSection("favourite_setion");
+	hideSection("category_setion");
+	
+	removeFocusHome();
+	
+}
+
+
+function showFavouriteSection(){
+	
+	addFavouritesToFavouritesScreen();
+	
+	
+	
+}
+
+
 function changeBg(image) {
     var d = {
         img: image,
@@ -649,4 +913,54 @@ function hideLoader(){
 		
 	
 		}
+
+
+
+function removeFocusHome(){
+
+	 document.body.scrollTop = 0;
+	  document.documentElement.scrollTop = 0;
+	  
+	
+	
+	
+	//Assign focus to detail button....
+	if(document.getElementsByClassName("activeDetail")[0] === undefined)
+	{
+	   setFocus("detail" , "activeDetail");	
+	}
+
+	
+	if(document.getElementsByClassName("activeCategory")[0] !== undefined)
+	{
+	   removeFocus("activeCategory");	
+	}
+else if(document.getElementsByClassName("button_play_now")[0] !== undefined)
+	{
+		removeFocus("button_play_now");
+	}
+else if(document.getElementsByClassName("button_favourite")[0] !== undefined)
+	{
+		removeFocus("button_favourite");
+	} 
+else if(document.getElementsByClassName("activeViewed")[0] !== undefined)
+	{
+		removeFocus("activeViewed");
+	}
+else if(document.getElementsByClassName("activeRecents")[0] !== undefined)
+	{
+		removeFocus("activeRecents");
+	}
+
+	
+}
+
+
+
+
+
+
+
+
+
 

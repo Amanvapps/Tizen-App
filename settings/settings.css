@@ -31,6 +31,13 @@ header nav {
     float: right;
 }
 
+.nav_button{
+	 background: none;
+	 border: none;
+	 outline: none;
+	 color: white;
+}
+
 header nav ul li {
     display: inline-block;
     padding: 18px 18px;
@@ -106,4 +113,114 @@ hr{
 	background: gray;
     height: .5px;
     margin-left: 25px;
+}
+
+
+
+
+
+
+/*Subscription Style*/
+
+.free_monthly_subs{
+	font-weight: bold;
+	
+}
+.card{
+	 border-radius: .75rem !importat;
+	 background: #413a4b;
+}
+.ml-5, .mx-5 {
+    margin-left: 6rem!important;
+}
+.device_total{
+    position: relative;
+    left: 6%;
+}
+.buyBtn {
+    color: white;
+    width: 285px;
+    height: 70px;
+    border: none;
+    outline: none;
+    background: #FF8400;
+    font-size: 26px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.unActive_card{
+	background: #292929
+}
+.info{
+	position: relative;
+    top: 156px;
+    font-size: 24px;
+}
+.website{
+    position: relative;
+    top: 89px;
+    font-weight: bold;
+    font-size: 53px;
+}
+.find_help{
+	font-size: 48px;
+    font-weight: bold;
+}
+.fa-question-circle{
+	 font-size: 132px;
+}
+hr{
+	background: gray;
+    height: .5px;
+    margin-left: 25px;
+}
+#email{
+	font-weight: bold;
+    font-size: 28px;
+}
+#phone{
+	font-weight: bold;
+    font-size: 28px;
+}
+.email_text{
+	font-size: 26px;
+}
+
+/ style for error screen /
+.error_msg{
+    position: absolute;
+    top: 27%;
+    text-align: center;
+    left: 17%;
+    font-weight: bold;
+    font-size: 54px;
+}
+.detail_btn {
+    color: white;
+    width: 285px;
+    height: 70px;
+    border: none;
+    outline: none;
+    background: #FF8400;
+    font-size: 26px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.try_btn {
+    color: white;
+    width: 285px;
+    height: 70px;
+    border: none;
+    outline: none;
+    background: #413a4b;
+    font-size: 26px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.btn_position{
+	position: absolute;
+    top: 47%;
+    text-align: center;
+    left: 34%;
 }

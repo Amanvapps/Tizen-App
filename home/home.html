@@ -47,14 +47,15 @@
                 <span> <i class="fa fa-search"></i></span>
                 <input type="text" class="search_Box" placeholder="Search">
 
-                <button class="watch_btn" onclick=""><span> <i class="fa fa-play-circle"></i></span> <span class="ml-4"> Watch Now</span></button>
+                <button class="watch_btn" onclick="showWatchSection()"><span> <i class="fa fa-play-circle"></i></span> <span class="ml-4"> Watch Now</span></button>
                   
-                <button onclick=""><span><i class="fab fa-viadeo"></i></span><span class="ml-4"> Catagories</span> </button>
+                <button onclick="showCategorySection()"><span><i class="fab fa-viadeo"></i></span><span class="ml-4"> Catagories</span> </button>
 
-                <button><span><i class="far fa-heart"></i></span> <span class="ml-4"> Favourites</span></button>
+
+                <button onclick="showFavouriteSection()"><span><i class="far fa-heart"></i></span> <span class="ml-4"> Favourites</span></button>
             </div>
         </div>
-        <button class="setting_btn" onclick="settingsNavigate()"><span><i class="fa fa-cog"></i></span> <span class="ml-4">Setting</span> </button>
+        <button class="setting_btn" onclick="settingsNavigate()"><span><i class="fa fa-cog"></i></span> <span class="ml-4">Settings</span> </button>
    
    <script type="text/javascript">
    
@@ -70,7 +71,9 @@
 
     <div class="split right" id="split_right">
     <div class="parent_right_section" id="parentRightSection">
-    <div class="centered">
+    <div id="watch_section_id" class="watch_section">
+    
+     <div class="centered">
             <h3 id="random-title" class="mt-4">Remotti Profession</h3>
             <p id="desc" class="video_description">Video is an electronic medium for the recording, copying, playback, broadcasting, and display of moving visual media.[1] Video was first developed for mechanical television systems, which were quickly replaced by cathode ray tube (CRT) systems
                 which were later replaced by flat</p>
@@ -83,11 +86,11 @@
           
             
             <span>
- <button class="play_btn mt-5"><i class="fa fa-play text-white"></i><span class="ml-3">Play Now</span></button>
-            <button class="favourite_btn mt-5">  <i class="fa fa-star text-white"></i><span class="ml-3"> Add to favourites</span></button>
+ <button id="play_btn" class="play_btn mt-5"><i class="fa fa-play text-white"></i><span class="ml-3">Play Now</span></button>
+            <button id="add_fav_btn" class="favourite_btn mt-5">  <i class="fa fa-star text-white"></i><span class="ml-3"> Add to favourites</span></button>
             </span>
             <br><br>
-            <div class="left_right_arrow"><span> > </span><span> < </span></div>
+            <div class="left_right_arrow"><span id="right_bg"> > </span><span id="left_bg"> < </span></div>
         </div>
         <br><br><br>
         <div class="container-fluid mt-5">
@@ -174,6 +177,104 @@
                 </div>
             </div>
         </div>
+
+
+    
+    </div>
+   
+
+
+
+
+
+
+
+
+
+
+<div class="categories_section mt-5" id="category_setion" style="display: none;>
+    <div class="container-fluid pl-5 pr-5 ">
+        <div class="row ">
+            <div class="col-lg-12 col-xl-12">
+                <h1 class="mt-3" style="font-size: 47px;font-weight: bold;">Categories</h1>
+                <p class="mt-5" style="font-size: 25px;"><i class="fas fa-align-justify mr-3"></i> All Generes and collection</p>
+                <div id="container-fluid-category-id" class="container-fluid mt-4">
+                    
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Favourite  -->
+<div class="categories_section mt-5" id="favourite_setion" style="display: none;>
+    <div class="container-fluid pl-5 pr-5 ">
+        <div class="row ">
+            <div class="col-lg-12 col-xl-12">
+                <h1 class="mt-3" style="font-size: 47px;font-weight: bold;">Favourites</h1>
+                <div id="container-fluid-favourite-id" class="container-fluid mt-4">
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
         
     </div>
