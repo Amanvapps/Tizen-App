@@ -17,6 +17,7 @@
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../language.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/all.min.css" />
 </head>
 
@@ -47,15 +48,15 @@
                 <span> <i class="fa fa-search"></i></span>
                 <input type="text" class="search_Box" placeholder="Search">
 
-                <button class="watch_btn" onclick="showWatchSection()"><span> <i class="fa fa-play-circle"></i></span> <span class="ml-4"> Watch Now</span></button>
+                <button id="watch_btn_id"  class="watch_btn" onclick="showWatchSection()"><span> <i class="fa fa-play-circle"></i></span> <span class="ml-4"> Watch Now</span></button>
                   
-                <button onclick="showCategorySection()"><span><i class="fab fa-viadeo"></i></span><span class="ml-4"> Catagories</span> </button>
+                <button id="category_btn_id" onclick="showCategorySection()"><span><i class="fab fa-viadeo"></i></span><span class="ml-4"> Catagories</span> </button>
 
 
-                <button onclick="showFavouriteSection()"><span><i class="far fa-heart"></i></span> <span class="ml-4"> Favourites</span></button>
+                <button id="fav_btn_id" onclick="showFavouriteSection()"><span><i class="far fa-heart"></i></span> <span class="ml-4"> Favourites</span></button>
             </div>
         </div>
-        <button class="setting_btn" onclick="settingsNavigate()"><span><i class="fa fa-cog"></i></span> <span class="ml-4">Settings</span> </button>
+        <button  id="setting_btn_id" class="setting_btn" onclick="settingsNavigate()"><span><i class="fa fa-cog"></i></span> <span class="ml-4">Settings</span> </button>
    
    <script type="text/javascript">
    
@@ -86,8 +87,8 @@
           
             
             <span>
- <button id="play_btn" class="play_btn mt-5"><i class="fa fa-play text-white"></i><span class="ml-3">Play Now</span></button>
-            <button id="add_fav_btn" class="favourite_btn mt-5">  <i class="fa fa-star text-white"></i><span class="ml-3"> Add to favourites</span></button>
+ <button class="play_btn mt-5"><i class="fa fa-play text-white"></i><span class="ml-3"  id="play_btn">Play Now</span></button>
+            <button  class="favourite_btn mt-5">  <i class="fa fa-star text-white"></i><span class="ml-3" id="add_fav_btn"> Add to favourites</span></button>
             </span>
             <br><br>
             <div class="left_right_arrow"><span id="right_bg"> > </span><span id="left_bg"> < </span></div>
@@ -97,8 +98,8 @@
             <div class="row ml-5">
                 <div class="col-lg-12 mx-auto ml-5">
                     <div class="d-flex justify-content-between catagory_type_text">
-                        <p>Catagory</p>
-                        <p>See more ></p>
+                        <p id="category_list_id">Catagory</p>
+                        <p id="see_more_list_id">See more ></p>
                     </div>
                     <div id="myCarousel1" class="carousel slide" data-ride="carousel" data-interval="0">
                         <!-- Wrapper for carousel items -->
@@ -126,8 +127,8 @@
             <div class="row ml-5">
                 <div class="col-lg-12 mx-auto ml-5">
                     <div class="d-flex justify-content-between catagory_type_text">
-                        <p>Most Viewed</p>
-                        <p>See more ></p>
+                        <p id="most_viewed_list_id">  Most Viewed</p>
+                        <p id="see_more_list_id">See more ></p>
                     </div>
                     <div id="myCarousel2" class="carousel slide" data-ride="carousel" data-interval="0">
                         <!-- Wrapper for carousel items -->
@@ -154,8 +155,8 @@
             <div class="row ml-5">
                 <div class="col-lg-12 mx-auto ml-5">
                     <div class="d-flex justify-content-between catagory_type_text">
-                        <p>Most Recent</p>
-                        <p>See more ></p>
+                        <p id="most_recent_list_id">Most Recent</p>
+                        <p id="see_more_list_id">See more ></p>
                     </div>
                     <div id="myCarousel3" class="carousel slide" data-ride="carousel" data-interval="0">
                         <!-- Wrapper for carousel items -->

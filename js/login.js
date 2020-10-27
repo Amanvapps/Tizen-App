@@ -1,5 +1,9 @@
 var init = function () {
        
+	
+	
+	initText();
+	
     document.getElementById("email").focus();
     initLoginElements();
     initTizenKeys();
@@ -7,6 +11,19 @@ var init = function () {
 
 
 window.onload = init;
+
+
+
+
+function initText(){
+	
+	document.getElementById("signIn_text_id").innerHTML = TIZEN_L10N['sign_in_text'];
+	document.getElementById("remmber_label").innerHTML = TIZEN_L10N['sign_in_remember_me'];
+	document.getElementById("loginButton").innerHTML = TIZEN_L10N['sign_in_btn_text'];
+	document.getElementById("forgotPassword").innerHTML = TIZEN_L10N['sign_in_forgot_pass'];	
+
+}
+
 
 
 function initTizenKeys()
@@ -225,7 +242,7 @@ function login()
 	let formData = new FormData();
 	formData.append('username', document.getElementById("email").value);
 	formData.append('password', document.getElementById("pass").value);
-	formData.append('devicehash', "SDKHUWUR7SQ24");
+	formData.append('devicehash', webapis.productinfo.getDuid());
 	formData.append('devicefriendlyname',  webapis.productinfo.getModel());
 	formData.append('platform', "Tizen " + webapis.tvinfo.getVersion());
 	formData.append('version', webapis.productinfo.getVersion());

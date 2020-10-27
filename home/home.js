@@ -10,6 +10,7 @@ var selectedListPos ;               //selected element of any of 3 lists...
 var init = function () {
        
 	
+	initText();
 	
 	
 	viewLoader();
@@ -31,6 +32,21 @@ var init = function () {
 window.onload = init;
 
 
+function initText(){
+	
+	document.getElementById("watch_btn_id").innerHTML = TIZEN_L10N['home_watch_now_text'];
+	document.getElementById("category_btn_id").innerHTML = TIZEN_L10N['home_category_text'];
+	document.getElementById("fav_btn_id").innerHTML = TIZEN_L10N['home_favorites_text'];
+	document.getElementById("setting_btn_id").innerHTML = TIZEN_L10N['home_settings_text'];	
+	document.getElementById("category_list_id").innerHTML = TIZEN_L10N['home_category_list'];	
+	document.getElementById("see_more_list_id").innerHTML = TIZEN_L10N['home_see_more_list'];	
+	document.getElementById("most_viewed_list_id").innerHTML = TIZEN_L10N['home_most_viewed_list'];	
+	document.getElementById("most_recent_list_id").innerHTML = TIZEN_L10N['home_most_recent_list'];	
+	document.getElementById("detail").innerHTML = TIZEN_L10N['home_detail_text'];	
+	document.getElementById("play_btn").innerHTML = TIZEN_L10N['home_play_now_text'];	
+	document.getElementById("add_fav_btn").innerHTML = TIZEN_L10N['home_add_to_fav_text'];	
+
+}
 
 
 
@@ -358,14 +374,20 @@ function getCategories(token)
 	
 			data["data"][0].forEach((result, index) => {
 		
- 			//add categories to list.....
-				var obj = {
-						"fullId" :  result[0],
-						"title" :  result[1],
-						"image" :  "https://media.uam.tv/images/media/category/" +result[0] + ".jpg"
-				};
+ 			
+				if(result[0] !== -1 && result[0] !== 0)
+					{
+					//add categories to list.....
+					var obj = {
+							"fullId" :  result[0],
+							"title" :  result[1],
+							"image" :  "https://media.uam.tv/images/media/category/" +result[0] + ".jpg"
+					};
+				
+					categoryList.push(obj);
+					}
+				
 			
-				categoryList.push(obj);
 				
 						        
 			})

@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" href="css/login.css" />
     <link rel="stylesheet" type="text/css" href="css/all.min.css"/>
     <script src="js/login.js"></script>
+        <script src="language.js"></script>
+    
     <script type="text/javascript" src="$WEBAPIS/webapis/webapis.js"></script>
 </head>
 
@@ -26,17 +28,17 @@
 </div>
 <div class="section2">
 <div class="container">
-<h1 class="signin">Sign In</h1><br><br>
+<h1 class="signin" id="signIn_text_id" ></h1><br><br>
 <input id="email" class="inputsE" type="text" placeholder="E-mail"> 
 <i class="fa fa-envelope"></i><br> <br><br>
 <input id="pass" class="inputsE" type="password" placeholder="Password"> 
 <i class="fa fa-lock"></i><br><br><br>
 <div class="chebox_btn_section">
-<div><input id = "remember" type="checkbox" class="checkBox" onclick="rememberFocus()"><label id="remmber_label">Remember me</label></div>
-<button class="loginBtn"  id="loginButton" onclick="loginStyleChange()">Sign in</button>
+<div><input id = "remember" type="checkbox" class="checkBox"><label id="remmber_label"></label></div>
+<button class="loginBtn"  id="loginButton" ></button>
 </div> <br> <br><br>
-<button class="nonStyle_btn"  id="forgotPassword" onclick=" changeStyle() ">Forgot Password</button> <br>
-<h2>Not a subscriber ? <button class="nonStyle_btn"  id="subscribe" onclick="signUpNOw()" ><strong>Subscribe now</strong></button></h2>
+<button class="nonStyle_btn"  id="forgotPassword" ></button> <br>
+<h2>Not a subscriber ? <button class="nonStyle_btn"  id="subscribe" ><strong>Subscribe now</strong></button></h2>
 <hr>
 </div>
 </div>

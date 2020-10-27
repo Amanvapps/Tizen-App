@@ -5,6 +5,7 @@ const URL = "https://api.uam.tv/";
 var init = function () {
        
     
+	
     var token = localStorage.getItem("jwt token");
    
     

@@ -2,7 +2,7 @@ const URL = "https://api.uam.tv/";
 
 var init = function () {
        
-	showProfileSection();
+	getProfileData();
     initTizenKeys();
 };
 
@@ -51,6 +51,8 @@ function initTizenKeys()
 function getProfileData() {
 	
 	
+	
+	
 	var token = localStorage.getItem("jwt token");
 	
 	if(token !== null)
@@ -70,8 +72,13 @@ function getProfileData() {
 						document.getElementById('profile_phone_section_id').innerHTML = data["data"][0]["phone"];
 						
 
+				
+						//get Subscription details...
+						getSubscriptionDetails(token);
 						
-								
+						
+						//show profile section...
+						showProfileSection();	
 						
 				
 
@@ -96,11 +103,122 @@ function getProfileData() {
 
 
 
+
+function getSubscriptionDetails(token){
+	
+	fetch(URL + 'v3/users/subscription/get.php', {
+		  headers: {
+			  'Authorization' : "Bearer " + token
+		  },
+		})
+		.then(response => response.json())
+		.then(data => {
+	
+			
+			
+			console.log(data);
+			
+		
+				document.getElementById("type_sub_id").innerHTML = toUpper(data["data"]["payment-method"]) + " " + toUpper(data["data"]["frequency"]) + " Subscription";
+				document.getElementById("effective_date_sub_id").innerHTML = formatDate(data["data"]["start-date"]);
+				document.getElementById("expiration_date_sub_id").innerHTML = formatDate(data["data"]["expiration-date"]);
+			
+				
+				
+				getDeviceListDetails(token)
+				
+			
+		
+
+		  
+		})
+		.catch((error) => {
+		  console.error('Err:', error);
+//		  hideLoader();
+		});
+	
+	
+}
+
+
+function getDeviceListDetails(token){
+	
+	
+	var device_showcase = document.getElementById("device_name_list");
+	
+	device_showcase.innerHTML = ``;
+	
+	
+	fetch(URL + 'v3/users/devices/get.php', {
+		  headers: {
+			  'Authorization' : "Bearer " + token
+		  },
+		})
+		.then(response => response.json())
+		.then(data => {
+	
+			
+			data.forEach((result, index) => {
+				
+	 		
+				console.log(data.toString());
+				
+				
+				var temp = `<p>${data[index]["friendly_name"]}</p>`;
+				
+					device_showcase.innerHTML += temp;		
+					
+							        
+				})
+			
+			
+				
+						
+				//show profile section...
+				showProfileSection();	
+				
+		
+
+		  
+		})
+		.catch((error) => {
+		  console.error('Err:', error);
+//		  hideLoader();
+		});
+	
+	
+}
+
+
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
+
+function toUpper(str) {
+	return str
+	    .toLowerCase()
+	    .split(' ')
+	    .map(function(word) {
+	        return word[0].toUpperCase() + word.substr(1);
+	    })
+	    .join(' ');
+	 }
+
+
 function showProfileSection()
 {
-	
-	
-
 	
 	  showSection("profile_section_id");
 	  hideSection("subscription_section_id");
